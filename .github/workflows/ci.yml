@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'  # Use 'temurin' for Adoptium
+          distribution: 'temurin'
 
       # Install Chrome
       - name: Install Chrome
@@ -37,11 +37,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Run tests (including integration tests for the API calls)
+      # Run tests
       - name: Run tests
         run: mvn verify
+
+      # Upload Serenity Reports using pinned SHA for stability
       - name: Upload Serenity Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@d5f4f7e8650eeef915c10c5c8f51b2c4cf941fba
         with:
           name: serenity-report
           path: target/site/serenity
