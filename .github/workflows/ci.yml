@@ -1,4 +1,4 @@
-name: ORANGE HRM CI Workflow
+name: GlobalSQA CI Workflow
 
 on:
   push:
@@ -18,10 +18,10 @@ jobs:
         uses: actions/checkout@v2
 
       # Set up JDK 17 using Adoptium (previously AdoptOpenJDK)
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '11'
           distribution: 'temurin'  # Use 'temurin' for Adoptium
 
       # Install Chrome
@@ -37,14 +37,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Build the project with Maven
-      - name: Build with Maven
-        run: mvn clean install -DskipTests=false
-
       # Run tests (including integration tests for the API calls)
       - name: Run tests
-        run: mvn test
-
-      # Optional: Run integration tests for external API calls if you have them
-      - name: Run integration tests
-        run: mvn verify -DskipTests=false
+        run: mvn verify
+      - name: Upload Serenity Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: serenity-report
+          path: target/site/serenity
