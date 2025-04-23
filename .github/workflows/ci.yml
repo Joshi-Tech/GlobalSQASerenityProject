@@ -2,33 +2,24 @@ name: GlobalSQA CI Workflow
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "**" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "**" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up JDK 11 using Adoptium (previously AdoptOpenJDK)
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'  # Use 'temurin' for Adoptium
+          distribution: 'temurin'
 
-      # Install Chrome
-      - name: Install Chrome
-        run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
-
-      # Cache Maven dependencies to speed up builds
       - name: Cache Maven dependencies
         uses: actions/cache@v4
         with:
@@ -37,11 +28,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Run tests (including integration tests for the API calls)
-      - name: Run tests
+      - name: Run tests (Headless Mode)
         run: mvn verify
+
       - name: Upload Serenity Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@d5f4f7e8650eeef915c10c5c8f51b2c4cf941fba
         with:
           name: serenity-report
           path: target/site/serenity
