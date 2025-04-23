@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>net.serenitybdd.starter</groupId>
     <artifactId>cucumber-starter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -17,8 +19,8 @@
         <junit-platform-suite.version>1.11.4</junit-platform-suite.version>
         <cucumber-junit-platform-engine.version>7.20.1</cucumber-junit-platform-engine.version>
         <encoding>UTF-8</encoding>
-        <java.version>21</java.version>
-        <maven.compiler.release>21</maven.compiler.release>
+        <java.version>11</java.version>
+        <maven.compiler.release>11</maven.compiler.release>
         <tags></tags>
         <webdriver.base.url></webdriver.base.url>
     </properties>
@@ -95,12 +97,10 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.serenity-bdd/serenity-junit5 -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit5</artifactId>
-            <version>4.2.16</version>
+            <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -115,6 +115,7 @@
             <version>1.0.2</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -154,10 +155,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -167,7 +167,6 @@
                 <configuration>
                     <tags>${tags}</tags>
                     <reports>single-page-html</reports>
-                    <!--                    <generateFullReport>true</generateFullReport>-->
                 </configuration>
                 <dependencies>
                     <dependency>
