@@ -17,8 +17,8 @@
         <junit-platform-suite.version>1.11.4</junit-platform-suite.version>
         <cucumber-junit-platform-engine.version>7.20.1</cucumber-junit-platform-engine.version>
         <encoding>UTF-8</encoding>
-        <java.version>21</java.version>
-        <maven.compiler.release>21</maven.compiler.release>
+        <java.version>11</java.version>
+        <maven.compiler.release>11</maven.compiler.release>
         <tags></tags>
         <webdriver.base.url></webdriver.base.url>
     </properties>
