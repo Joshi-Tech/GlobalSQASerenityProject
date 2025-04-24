@@ -11,8 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>4.2.16</serenity.version>
-        <serenity.cucumber.version>4.2.16</serenity.cucumber.version>
+        <serenity.version>4.2.22</serenity.version>
+        <serenity.cucumber.version>4.2.22</serenity.cucumber.version>
         <junit-vintage-engine.version>5.11.4</junit-vintage-engine.version>
         <junit-platform-suite.version>1.11.4</junit-platform-suite.version>
         <cucumber-junit-platform-engine.version>7.20.1</cucumber-junit-platform-engine.version>
