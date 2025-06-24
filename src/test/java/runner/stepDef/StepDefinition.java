@@ -2,7 +2,6 @@ package runner.stepDef;
 
 import actions.HomePageActions;
 import com.github.javafaker.Faker;
-import hook.Hook;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,18 +15,14 @@ import static enums.MenuItemsID.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.ExtractString.getString;
 
-public class StepDefinition extends Hook {
+public class StepDefinition {
 
-    @Steps
     HomePageActions homePageActions;
 
-    @Steps
     DatePickerPage datePickerPage;
 
-    @Steps
     DialogBoxPage dialogBoxPage;
 
-    @Steps
     SamplePage samplePage;
 
     @Steps
@@ -42,17 +37,12 @@ public class StepDefinition extends Hook {
     public void user_is_on_page(String page) {
         homePageActions.openPage();
         switch (page) {
-            case "DatePicker":
-                homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), DATE_PICK.getId());
-                break;
-            case "Dialog Box":
-                homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), DIALOG_BOX.getId());
-                break;
-            case "Sample Page":
-                homePageActions.hoverOver(TESTERS_HUB.getId(), SAMPLE_PAGE_LINK.getId());
-                break;
-            default:
-                throw new RuntimeException("Page not found");
+            case "DatePicker" ->
+                    homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), DATE_PICK.getId());
+            case "Dialog Box" ->
+                    homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), DIALOG_BOX.getId());
+            case "Sample Page" -> homePageActions.hoverOver(TESTERS_HUB.getId(), SAMPLE_PAGE_LINK.getId());
+            default -> throw new RuntimeException("Page not found");
         }
     }
 
@@ -79,17 +69,12 @@ public class StepDefinition extends Hook {
     @When("I click {string} link within Tester's Hub")
     public void i_click_link_within_tester_s_hub(String link) {
         switch (link) {
-            case "Date Picker":
-                homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), DATE_PICK.getId());
-                break;
-            case "Alert":
-                homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), ALERT_BOX.getId());
-                break;
-            case "Sample Page":
-                homePageActions.hoverOver(TESTERS_HUB.getId(), SAMPLE_PAGE_LINK.getId());
-                break;
-            default:
-                throw new RuntimeException("Page not found");
+            case "Date Picker" ->
+                    homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), DATE_PICK.getId());
+            case "Alert" ->
+                    homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), ALERT_BOX.getId());
+            case "Sample Page" -> homePageActions.hoverOver(TESTERS_HUB.getId(), SAMPLE_PAGE_LINK.getId());
+            default -> throw new RuntimeException("Page not found");
         }
     }
 
@@ -107,20 +92,13 @@ public class StepDefinition extends Hook {
     @Then("I'll be able to see heading {string}")
     public void i_ll_be_able_to_see_heading(String text) {
         switch (text) {
-            case "DatePicker":
-                Serenity.reportThat("Date picker page is open",
-                        () -> assertEquals(text, datePickerPage.getH1()));
-                break;
-            case "Sample Page Test":
-                Serenity.reportThat("Sample page is open",
-                        () -> assertEquals(text, samplePage.getH1Text()));
-                break;
-            case "AlertBox":
-                Serenity.reportThat("AlertBox page is open",
-                        () -> assertEquals(text, samplePage.getH1Text()));
-                break;
-            default:
-                throw new RuntimeException("Page not found");
+            case "DatePicker" -> Serenity.reportThat("Date picker page is open",
+                    () -> assertEquals(text, datePickerPage.getH1()));
+            case "Sample Page Test" -> Serenity.reportThat("Sample page is open",
+                    () -> assertEquals(text, samplePage.getH1Text()));
+            case "AlertBox" -> Serenity.reportThat("AlertBox page is open",
+                    () -> assertEquals(text, samplePage.getH1Text()));
+            default -> throw new RuntimeException("Page not found");
         }
     }
 
@@ -138,7 +116,6 @@ public class StepDefinition extends Hook {
     public void they_can_see_user_name_in_the_existing_users_list(String userName) {
         assertEquals(userName, dialogBoxPage.getUserDetails("Ram Singh"));
     }
-
 
     @When("they click on {string} tab")
     public void they_click_on_tab(String tab) {

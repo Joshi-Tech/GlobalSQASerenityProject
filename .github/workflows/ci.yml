@@ -2,11 +2,7 @@ name: GlobalSQA CI Workflow
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -17,18 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up JDK 11 using Adoptium (previously AdoptOpenJDK)
+      # Set up JDK 11 using Temurin (Adoptium)
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'  # Use 'temurin' for Adoptium
+          distribution: 'temurin'
 
-      # Install Chrome
+      # Install Google Chrome
       - name: Install Chrome
-        run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
-      # Cache Maven dependencies to speed up builds
+      # Cache Maven dependencies
       - name: Cache Maven dependencies
         uses: actions/cache@v4
         with:
@@ -37,11 +35,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Run tests (including integration tests for the API calls)
+      # Run tests (Serenity should be configured for headless in serenity.conf or test setup)
       - name: Run tests
-        run: mvn verify
-      - name: Upload Serenity Reports
-        uses: actions/upload-artifact@v3
-        with:
-          name: serenity-report
-          path: target/site/serenity
+        run: mvn clean verify
+
+      # Upload Serenity reports (optional)
+#      - name: Upload Serenity Reports
+#        if: always()  # Change to `failure()` if you only want on failure
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: serenity-report
+#          path: target/site/serenity

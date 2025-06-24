@@ -1,6 +1,6 @@
 Feature: Date Picker Navigation
 
-
+  @unitTest
   Scenario: Navigate to Date Picker Page
     Given I go the home page
     When I click "Date Picker" link within Tester's Hub
