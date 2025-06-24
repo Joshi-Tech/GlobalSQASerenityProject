@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)  // Use Serenity Runner
 @CucumberOptions(
         features = "src/test/resources/features",  // Path to feature files
-        glue = "runner.stepDef",  // Package containing step definitions
-        plugin = {"pretty", "html:target/cucumber-reports.html"} // Reports
-        //tags = "@DatePicker"  // Run specific scenarios (optional)
+        glue = "runner.stepDef"//,  // Package containing step definitions
+        //plugin = {"pretty", "html:target/cucumber-reports.html"} // Reports
+       // tags = "@smoke"  // Run specific scenarios (optional)
 )
 public class CucumberTestSuite {
 }

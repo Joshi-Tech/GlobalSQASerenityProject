@@ -17,8 +17,8 @@
         <junit-platform-suite.version>1.11.4</junit-platform-suite.version>
         <cucumber-junit-platform-engine.version>7.20.1</cucumber-junit-platform-engine.version>
         <encoding>UTF-8</encoding>
-        <java.version>11</java.version>
-        <maven.compiler.release>11</maven.compiler.release>
+        <java.version>17</java.version>
+        <maven.compiler.release>17</maven.compiler.release>
         <tags></tags>
         <webdriver.base.url></webdriver.base.url>
     </properties>
@@ -95,8 +95,6 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.serenity-bdd/serenity-junit5 -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit5</artifactId>
@@ -113,6 +111,11 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>6.1.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -160,14 +163,14 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.version}</version>
                 <configuration>
                     <tags>${tags}</tags>
                     <reports>single-page-html</reports>
-                    &lt;!&ndash;                    <generateFullReport>true</generateFullReport>&ndash;&gt;
+                    <!--                    <generateFullReport>true</generateFullReport>-->
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -185,7 +188,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 </project>
