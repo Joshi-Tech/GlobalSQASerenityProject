@@ -23,7 +23,7 @@ public class DatePickerPage extends PageObject {
     public void selectDate(String date) {
         $$(getString("locators", "datePicker.date"))
                 .stream().filter(x -> x.getText().equals(date))
-                .collect(Collectors.toList())
+                .toList()
                 .get(0)
                 .click();
     }
@@ -33,6 +33,6 @@ public class DatePickerPage extends PageObject {
     }
 
     public String getH1(){
-        return $(getString("locators", "h1Text")).getText();
+        return $(getString("locators", "common.h1Text")).getText();
     }
 }

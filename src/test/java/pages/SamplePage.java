@@ -18,13 +18,13 @@ public class SamplePage extends PageObject {
 
 
     public String getH1Text() {
-        return $(getString("locators", "h1Text")).getText();
+        return $(getString("locators", "common.h1Text")).getText();
     }
 
     public void submitUserDetails(String name, String email, String website, String value,
                                   String expertise, String education, String message) {
         WebElement fileUpload = $(getString("locators", "samplePage.addAttachment"));
-        fileUpload.sendKeys("C:\\Users\\lkjos\\OneDrive\\Desktop\\SerenityProject\\GlobalSQASerenityProject\\src\\test\\resources\\attachments\\catPicture.jpg");
+        fileUpload.sendKeys("C:\\Users\\LaxmiKantJoshi\\Desktop\\GlobalSQA\\GlobalSQASerenityProject\\src\\test\\resources\\attachments\\catPicture.jpg");
         $(getString("locators", "samplePage.nameTextBox")).sendKeys(name);
         $(getString("locators", "samplePage.emailTextBox")).sendKeys(email);
         $(getString("locators", "samplePage.websiteTextBox")).sendKeys(website);

@@ -28,12 +28,12 @@ public class StepDefinition {
     @Steps
     Faker faker;
 
-    @Given("I go the home page")
-    public void i_go_the_home_page() {
+    @Given("user go the home page")
+    public void user_go_the_home_page() {
         homePageActions.openPage();
     }
 
-    @Given("User is on {string} page")
+    @Given("user is on {string} page")
     public void user_is_on_page(String page) {
         homePageActions.openPage();
         switch (page) {
@@ -66,8 +66,8 @@ public class StepDefinition {
         datePickerPage.selectDate(date);
     }
 
-    @When("I click {string} link within Tester's Hub")
-    public void i_click_link_within_tester_s_hub(String link) {
+    @When("they click {string} link within Tester's Hub")
+    public void they_click_link_within_tester_s_hub(String link) {
         switch (link) {
             case "Date Picker" ->
                     homePageActions.hoverOver(TESTERS_HUB.getId(), DEMO_TESTING_SITE.getId(), DATE_PICK.getId());
@@ -89,8 +89,8 @@ public class StepDefinition {
         assertEquals(message, samplePage.getMessageText());
     }
 
-    @Then("I'll be able to see heading {string}")
-    public void i_ll_be_able_to_see_heading(String text) {
+    @Then("they'll be able to see heading {string}")
+    public void they_ll_be_able_to_see_heading(String text) {
         switch (text) {
             case "DatePicker" -> Serenity.reportThat("Date picker page is open",
                     () -> assertEquals(text, datePickerPage.getH1()));

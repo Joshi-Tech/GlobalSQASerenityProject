@@ -13,16 +13,16 @@
 
 ## Tools Used
 
-| Tool/Library          | Purpose                                  |
-|-----------------------|------------------------------------------|
-| **Serenity BDD**      | Test automation framework                |
-| **Java 11**           | Programming language                     |
-| **Maven 3.8**         | Build and dependency management tool     |
-| **JUnit**             | Test runner                              |
-| **Serenity Reports**  | Reporting tool                           |
-| **Lombok**            | Reduces boilerplate code                 |
-| **Java Faker API**    | Fake data generation                     |
-| **Headless Mode**     | Runs browser tests without GUI (faster)  |
+| Tool/Library         | Purpose                                  |
+|----------------------|------------------------------------------|
+| **Serenity BDD**     | Test automation framework                |
+| **Java 21**          | Programming language                     |
+| **Maven 3.8**        | Build and dependency management tool     |
+| **JUnit**            | Test runner                              |
+| **Serenity Reports** | Reporting tool                           |
+| **Lombok**           | Reduces boilerplate code                 |
+| **Java Faker API**   | Fake data generation                     |
+| **Headless Mode**    | Runs browser tests without GUI (faster)  |
 
 ## How to Run Tests
 
