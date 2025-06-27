@@ -41,4 +41,4 @@ jobs:
         env:
           DISPLAY: :99
         run: |
-          mvn clean verify "-Dcucumber.filter.tags=@smoke or @unitTest"
+          mvn clean verify "-Dcucumber.filter.tags=@smoke or @unitTest" -Dheadless.mode=false
