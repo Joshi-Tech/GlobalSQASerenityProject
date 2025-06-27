@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <serenity.version>4.2.22</serenity.version>
         <serenity.cucumber.version>4.2.22</serenity.cucumber.version>
-        <junit-vintage-engine.version>5.11.4</junit-vintage-engine.version>
+        <serenity.maven.version>4.2.34</serenity.maven.version>
         <junit-platform-suite.version>1.11.4</junit-platform-suite.version>
         <cucumber-junit-platform-engine.version>7.20.1</cucumber-junit-platform-engine.version>
         <encoding>UTF-8</encoding>
@@ -74,14 +74,8 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-vintage-engine.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-vintage-engine.version}</version>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.13.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -170,7 +164,7 @@
                 <configuration>
                     <tags>${tags}</tags>
                     <reports>single-page-html</reports>
-                    <!--                    <generateFullReport>true</generateFullReport>-->
+                    <generateFullReport>true</generateFullReport>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -179,6 +173,25 @@
                         <version>${serenity.version}</version>
                     </dependency>
                 </dependencies>
+                <executions>
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--            /////////////////////////////////////////////////////-->
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>${serenity.maven.version}</version>
+                <configuration>
+                    <tags>${tags}</tags>
+                </configuration>
                 <executions>
                     <execution>
                         <id>serenity-reports</id>

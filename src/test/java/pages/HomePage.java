@@ -2,9 +2,9 @@ package pages;
 
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.pages.PageObject;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static util.ExtractString.getString;
 
 public class HomePage extends PageObject {
@@ -18,7 +18,9 @@ public class HomePage extends PageObject {
         } else {
             //do nothing
         }
+
         Serenity.reportThat("Global SQA home page opens: ",
-                () -> Assert.assertEquals(getString("pageText", "homePage.title"), getDriver().getTitle()));
+                () -> assertThat(getDriver().getTitle())
+                        .isEqualTo(getString("pageText", "homePage.title")));
     }
 }
