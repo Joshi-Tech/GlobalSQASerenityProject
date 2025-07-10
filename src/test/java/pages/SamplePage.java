@@ -3,7 +3,6 @@ package pages;
 
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -18,6 +17,7 @@ public class SamplePage extends PageObject {
 
 
     public String getH1Text() {
+        $(getString("locators", "common.h1Text")).waitUntilVisible();
         return $(getString("locators", "common.h1Text")).getText();
     }
 
@@ -33,20 +33,26 @@ public class SamplePage extends PageObject {
         select.selectByValue(value);
         Actions actions = new Actions(getDriver());
         List<WebElementFacade> checkBox = $$(getString("locators", "samplePage.checkBox"));
+        checkBox.get(0).waitUntilVisible();
+        checkBox.get(0).waitUntilEnabled();
         List<WebElementFacade> checkBoxList = checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList());
+        checkBoxList.stream().forEach(System.out::println);
+        checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList()).get(0).waitUntilVisible();
+        checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList()).get(0).waitUntilEnabled();
         checkBoxList.get(0).click();
-        checkBoxList.get(0).sendKeys(Keys.TAB);
         List<WebElementFacade> educationRadioLabel = $$(getString("locators", "samplePage.educationRadioLabel"));
         $(getString("locators", "samplePage.AlertBox")).click();
         String alertText = getDriver().switchTo().alert().getText();
         assertEquals(getString("pageText", "samplePage.firstAlertText"), alertText);
+
         getDriver().switchTo().alert().accept();
+
         String secondAlertText = getDriver().switchTo().alert().getText();
         assertEquals(getString("pageText", "samplePage.secondAlertText"), secondAlertText);
         getDriver().switchTo().alert().accept();
         List<WebElementFacade> educationList = educationRadioLabel.stream().filter(x -> x.getText().equals(education)).collect(Collectors.toList());
         actions.moveToElement(educationList.get(0)).click().perform();
-        $(getString("locators", "samplePage.textArea")).sendKeys(message);
+        $(getString("locators", "samplePage.textArea")).typeAndTab(message);
         actions.moveToElement($("[type='submit']")).click().perform();
     }
 

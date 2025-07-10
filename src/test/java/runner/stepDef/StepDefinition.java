@@ -81,7 +81,7 @@ public class StepDefinition {
     @When("I complete the Sample Page")
     public void i_complete_the_sample_page() {
         samplePage.submitUserDetails(faker.name().name(), faker.internet().emailAddress(), "https://" + faker.internet().domainName(),
-                "7-10", "Automation Testing", "Graduate", "Example Text");
+                "7-10", "Manual Testing", "Graduate", "Example Text");
     }
 
     @Then("I can see text {string}")
