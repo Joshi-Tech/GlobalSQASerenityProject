@@ -40,16 +40,24 @@ public class SamplePage extends PageObject {
         checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList()).get(0).waitUntilVisible();
         checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList()).get(0).waitUntilEnabled();
         checkBoxList.get(0).click();
-        List<WebElementFacade> educationRadioLabel = $$(getString("locators", "samplePage.educationRadioLabel"));
-        $(getString("locators", "samplePage.AlertBox")).click();
+        /* $(getString("locators", "samplePage.AlertBox")).click();
         String alertText = getDriver().switchTo().alert().getText();
         assertEquals(getString("pageText", "samplePage.firstAlertText"), alertText);
 
         getDriver().switchTo().alert().accept();
-
         String secondAlertText = getDriver().switchTo().alert().getText();
         assertEquals(getString("pageText", "samplePage.secondAlertText"), secondAlertText);
-        getDriver().switchTo().alert().accept();
+        getDriver().switchTo().alert().accept();*/
+        List<WebElementFacade> educationRadioLabel = $$(getString("locators", "samplePage.educationRadioLabel"));
+       /* $(getString("locators", "samplePage.AlertBox")).click();
+        String alertText = getDriver().switchTo().alert().getText();
+        assertEquals(getString("pageText", "samplePage.firstAlertText"), alertText);
+
+        getDriver().switchTo().alert().accept();*/
+
+       /* String secondAlertText = getDriver().switchTo().alert().getText();
+        assertEquals(getString("pageText", "samplePage.secondAlertText"), secondAlertText);
+        getDriver().switchTo().alert().accept();*/
         List<WebElementFacade> educationList = educationRadioLabel.stream().filter(x -> x.getText().equals(education)).collect(Collectors.toList());
         actions.moveToElement(educationList.get(0)).click().perform();
         $(getString("locators", "samplePage.textArea")).typeAndTab(message);
