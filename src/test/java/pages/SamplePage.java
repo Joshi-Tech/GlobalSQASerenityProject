@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.ExtractString.getString;
 
 public class SamplePage extends PageObject {
@@ -24,7 +23,7 @@ public class SamplePage extends PageObject {
     public void submitUserDetails(String name, String email, String website, String value,
                                   String expertise, String education, String message) {
         WebElement fileUpload = $(getString("locators", "samplePage.addAttachment"));
-        fileUpload.sendKeys("C:\\Users\\LaxmiKantJoshi\\Desktop\\GlobalSQA\\GlobalSQASerenityProject\\src\\test\\resources\\attachments\\catPicture.jpg");
+        fileUpload.sendKeys("/Users/lkjoshi/Desktop/MyProjects/GlobalSQASerenityProject/src/test/resources/attachments/catPicture.jpg");
         $(getString("locators", "samplePage.nameTextBox")).sendKeys(name);
         $(getString("locators", "samplePage.emailTextBox")).sendKeys(email);
         $(getString("locators", "samplePage.websiteTextBox")).sendKeys(website);
@@ -39,24 +38,7 @@ public class SamplePage extends PageObject {
         checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).toList().get(0).waitUntilVisible();
         checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).toList().get(0).waitUntilEnabled();
         checkBoxList.get(0).click();
-        /* $(getString("locators", "samplePage.AlertBox")).click();
-        String alertText = getDriver().switchTo().alert().getText();
-        assertEquals(getString("pageText", "samplePage.firstAlertText"), alertText);
-
-        getDriver().switchTo().alert().accept();
-        String secondAlertText = getDriver().switchTo().alert().getText();
-        assertEquals(getString("pageText", "samplePage.secondAlertText"), secondAlertText);
-        getDriver().switchTo().alert().accept();*/
         List<WebElementFacade> educationRadioLabel = $$(getString("locators", "samplePage.educationRadioLabel"));
-       /* $(getString("locators", "samplePage.AlertBox")).click();
-        String alertText = getDriver().switchTo().alert().getText();
-        assertEquals(getString("pageText", "samplePage.firstAlertText"), alertText);
-
-        getDriver().switchTo().alert().accept();*/
-
-       /* String secondAlertText = getDriver().switchTo().alert().getText();
-        assertEquals(getString("pageText", "samplePage.secondAlertText"), secondAlertText);
-        getDriver().switchTo().alert().accept();*/
         List<WebElementFacade> educationList = educationRadioLabel.stream().filter(x -> x.getText().equals(education)).collect(Collectors.toList());
         actions.moveToElement(educationList.get(0)).click().perform();
         $(getString("locators", "samplePage.textArea")).typeAndTab(message);

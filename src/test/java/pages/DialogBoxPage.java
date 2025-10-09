@@ -16,7 +16,7 @@ public class DialogBoxPage extends PageObject {
         WebElement frameElement = $(getString("locators", "dialogueBox.frame"));
         getDriver().switchTo().frame(frameElement);
         ListOfWebElementFacades userDetails = $$(getString("locators", "dialogueBox.userDetails"));
-        return userDetails.stream().filter(x -> x.getText().equals(user)).collect(Collectors.toList())
+        return userDetails.stream().filter(x -> x.getText().equals(user)).toList()
                 .get(0).getText();
     }
 
