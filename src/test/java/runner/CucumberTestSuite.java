@@ -11,6 +11,6 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "runner.stepDef")
 @SelectPackages("stepDef")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporter,pretty")
-@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@smoke or @unitTest")
+//@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@smoke or @unitTest")
 public class CucumberTestSuite {
 }

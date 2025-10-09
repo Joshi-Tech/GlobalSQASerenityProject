@@ -10,4 +10,4 @@ Feature: Sample page feature
   Scenario: Complete Sample Page
     Given user is on "Sample Page" page
     When  I complete the Sample Page
-    Then I can see text "Message Sent (go back)"
+    Then I can see text "Your message has been sent"

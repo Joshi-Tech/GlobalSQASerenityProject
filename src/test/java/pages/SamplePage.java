@@ -24,7 +24,7 @@ public class SamplePage extends PageObject {
     public void submitUserDetails(String name, String email, String website, String value,
                                   String expertise, String education, String message) {
         WebElement fileUpload = $(getString("locators", "samplePage.addAttachment"));
-        fileUpload.sendKeys("C:\\Users\\lkjos\\OneDrive\\Desktop\\SerenityProject\\GlobalsSQA1\\GlobalSQASerenityProject\\src\\test\\resources\\attachments\\catPicture.jpg");
+        fileUpload.sendKeys("C:\\Users\\LaxmiKantJoshi\\Desktop\\GlobalSQA\\GlobalSQASerenityProject\\src\\test\\resources\\attachments\\catPicture.jpg");
         $(getString("locators", "samplePage.nameTextBox")).sendKeys(name);
         $(getString("locators", "samplePage.emailTextBox")).sendKeys(email);
         $(getString("locators", "samplePage.websiteTextBox")).sendKeys(website);
@@ -35,10 +35,9 @@ public class SamplePage extends PageObject {
         List<WebElementFacade> checkBox = $$(getString("locators", "samplePage.checkBox"));
         checkBox.get(0).waitUntilVisible();
         checkBox.get(0).waitUntilEnabled();
-        List<WebElementFacade> checkBoxList = checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList());
-        checkBoxList.stream().forEach(System.out::println);
-        checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList()).get(0).waitUntilVisible();
-        checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).collect(Collectors.toList()).get(0).waitUntilEnabled();
+        List<WebElementFacade> checkBoxList = checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).toList();
+        checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).toList().get(0).waitUntilVisible();
+        checkBox.stream().filter(x -> x.getText().equals(expertise.trim())).toList().get(0).waitUntilEnabled();
         checkBoxList.get(0).click();
         /* $(getString("locators", "samplePage.AlertBox")).click();
         String alertText = getDriver().switchTo().alert().getText();

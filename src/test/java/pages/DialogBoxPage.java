@@ -35,7 +35,7 @@ public class DialogBoxPage extends PageObject {
         $(getString("locators", "dialogueBox.userPassword")).sendKeys(password);
         $$(getString("locators", "dialogueBox.createAccountButton")).stream()
                 .filter(x -> x.getText().equals("Create an account"))
-                .collect(Collectors.toList()).get(0).click();
+                .toList().get(0).click();
         getDriver().switchTo().parentFrame();
     }
 
