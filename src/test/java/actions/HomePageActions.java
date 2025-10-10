@@ -6,7 +6,7 @@ import net.serenitybdd.core.steps.UIInteractions;
 import org.openqa.selenium.interactions.Actions;
 import pages.HomePage;
 
-import static enums.MenuItemsID.MENU_ITEMS;
+import static enums.MenuItemsID.*;
 
 public class HomePageActions extends UIInteractions {
     HomePage homePage;
