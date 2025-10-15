@@ -1,6 +1,7 @@
 package pages;
 
 import net.serenitybdd.annotations.Step;
+import net.serenitybdd.core.steps.UIInteractions;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 
