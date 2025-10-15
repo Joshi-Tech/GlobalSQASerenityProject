@@ -13,11 +13,11 @@ public class HomePage extends PageObject {
         String url = getString("pageText", "baseUrl");
         openUrl(url);
         getDriver().manage().window().maximize();
-        if (find(By.xpath(getString("locators", "consentButton"))).isPresent()) {
+        /*if (find(By.xpath(getString("locators", "consentButton"))).isPresent()) {
             $(getString("locators", "consentButton")).click();
         } else {
             //do nothing
-        }
+        }*/
 
         Serenity.reportThat("Global SQA home page opens: ",
                 () -> assertThat(getDriver().getTitle())
