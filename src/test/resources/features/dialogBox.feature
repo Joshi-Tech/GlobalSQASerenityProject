@@ -1,5 +1,6 @@
 Feature: Drop box attributes
 
+
   Scenario: user details can be seen
     Given user is on "Dialog Box" page
     Then  they can see user name "John Doe"

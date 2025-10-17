@@ -1,5 +1,6 @@
 Feature: Sample page feature
 
+
   @unitTest
   Scenario: Navigate to Sample Page
     Given user go the home page
